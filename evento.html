@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar Eventos</title>
+    <style>
+       body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        
+    }
+
+    .container {
+    display: flex;
+    min-height: 100vh; /* Cambiado de 'height' a 'min-height' */
+    width: 100%;
+}
+
+
+.sidebar {
+    width: 170px;
+    position: sticky;
+    background-color: #002D62;
+    color: #fff;
+    padding: 20px;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+    .sidebar h2 {
+        margin-bottom: 20px;
+        
+    }
+
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .sidebar ul li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar ul li a {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+
+    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 170px;
+            position: sticky;
+            background-color: #002D62;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom:30px;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Estilos para el formulario */
+        form {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            flex: 0 0 calc(50% - 20px);
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group:last-child {
+            margin-right: 0;
+        }
+
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select  {
+            width: 100%;
+            padding: 6px; /* Se redujo el padding */
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            font-size: 14px; /* Se redujo el tamaño de fuente */
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            width: calc(40% - 20px);
+            padding: 10px; /* Se ajustó el padding */
+            margin-top: 10px;
+            background-color: #002D62;
+            color: #fff;
+            margin: auto;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #0056b3;
+        }
+        svg {
+  position:fixed;
+  cursor: pointer;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#002D62;
+  fill: white;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  font-size:30px;
+  z-index:100;
+}
+
+.whatsapp-icon {
+  margin-top:13px;
+}
+.map-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
+
+        /* Estilos para el botón de cierre */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #666;
+        }
+
+        /* Estilos para el mapa */
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+    @media screen and (max-width: 768px) {
+        body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width:100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ocupa al menos el 100% de la altura de la ventana gráfica */
+}
+
+.sidebar {
+    width: 100%; /* Ocupa todo el ancho en dispositivos móviles */
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+.form-group {
+                flex: 0 0 100%;
+                margin-right: 0;
+            }
+
+            input[type="submit"],
+            input[type="reset"] {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .map-container {
+                width: 70%;
+                max-width: none;
+            }
+
+            #map {
+                height: 100px;
+            }
+
+    }
+
+    </style>
+    <link rel="shortcut icon" href="css\img\logo-removebg-preview.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Cargar Eventos</h2>
+            <hr>
+            <ul><br>
+                <li><a href="dashordb.php">Inico</a></li>
+                <li><a href="registro.php">Registrar Usuarios</a></li>
+                <li><a href="buscar.php">Buscar Evento</a></li>
+                <li><a href="eventos_avance2.php">Evento Avance</a></li>
+                <li><a href="notificaciones.php">Notificaciones</a></li>
+                <li><a href="repositorio.php">Repositorio</a></li>
+                <li><a href="notas.php">Notas</a></li>
+                <li><a href="admin.php">Administrar Recursos</a></li>
+            </ul>
+        </div>
+        <div class="content">
+
+
+<form action="crear_evento.php" method="POST">
+    <div class="form-group">
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo" onchange="actualizarSubtipos()" required>
+            <option value="" disabled selected>Selecciona un tipo</option>
+            <option value="Accidentes de Tráfico">Accidentes de Tráfico</option>
+            <option value="Emergencias Médicas">Emergencias Médicas</option>
+            <option value="Incendios">Incendios</option>
+            <option value="Crimen y Violencia">Crimen y Violencia</option>
+            <option value="Rescates">Rescates</option>
+            <option value="Emergencias Ambientales">Emergencias Ambientales</option>
+            <option value="Problemas de Seguridad Pública">Problemas de Seguridad Pública</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="subtipo">Subtipo:</label>
+        <select id="subtipo" name="subtipo" required>
+            <option value="" disabled selected>Selecciona un subtipo</option>
+            <!-- Los subtipos se llenarán dinámicamente aquí -->
+        </select>
+    </div>
+    
+    
+    
+    <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="avance">Avance:</label>
+        <input type="text" id="avance" name="avance">
+    </div>
+    
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="tipo_documento">Tipo de Documento:</label>
+      
+        <select name="tipo_documento" id="tipo_documento">
+ <option value="" disabled selected>Selecciona un tipo de documento</option>
+ <option value="dni">DNI</option>
+ <option value="pasaporte">Pasaporte</option>
+ <option value="le">Libreta de Enrolamiento</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="documento">Documento:</label>
+        <input type="number" id="documento" name="documento" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="tel">Teléfono:</label>
+        <input type="tel" id="tel" name="tel">
+    </div>
+    
+    <div class="form-group">
+        <label for="calle">Calle:</label>
+        <input type="text" id="calle" name="calle">
+    </div>
+    
+    <div class="form-group">
+        <label for="entre_calle">Entre Calle:</label>
+        <input type="text" id="entre_calle" name="entre_calle">
+    </div>
+    
+    <div class="form-group">
+        <label for="altura">Altura:</label>
+        <input type="number" id="altura" name="altura">
+    </div>
+    
+    <div class="form-group">
+        <label for="piso">Piso:</label>
+        <input type="text" id="piso" name="piso">
+    </div>
+    
+    <div class="form-group">
+        <label for="dto">Departamento:</label>
+        <input type="text" id="dto" name="dto">
+    </div>
+    
+    <input type="submit" name="guardar_datos" value="Guardar Datos">
+    <input type="reset" value="Limpiar">
+</form>
+<a href="#" onclick="openMapContainer()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: white;"><path d="M12 14c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.103 0 2 .897 2 2s-.897 2-2 2-2-.897-2-2 .897-2 2-2z"></path><path d="M11.42 21.814a.998.998 0 0 0 1.16 0C12.884 21.599 20.029 16.44 20 10c0-4.411-3.589-8-8-8S4 5.589 4 9.995c-.029 6.445 7.116 11.604 7.42 11.819zM12 4c3.309 0 6 2.691 6 6.005.021 4.438-4.388 8.423-6 9.73-1.611-1.308-6.021-5.294-6-9.735 0-3.309 2.691-6 6-6z"></path></svg>
+    <i class="fa fa-whatsapp whatsapp-icon"></i>
+    </a>
+    <div class="map-container" id="map-container">
+        <span class="close-btn" onclick="closeMapContainer()">&times;</span>
+        <h1>Selecciona una posición en el mapa:</h1>
+      
+        <div id="map"></div>
+        <p id="address"></p>
+    
+    </div>
+</div>
+</div>
+<script>
+    function actualizarSubtipos() {
+        // Obtener el valor seleccionado en el select de tipo
+        var tipoSeleccionado = document.getElementById("tipo").value;
+        // Obtener el select de subtipo
+        var subtipoSelect = document.getElementById("subtipo");
+
+        // Limpiar el select de subtipo
+        subtipoSelect.innerHTML = "";
+
+        // Añadir una opción predeterminada
+        var optionDefault = document.createElement("option");
+        optionDefault.value = "";
+        optionDefault.text = "Selecciona un subtipo";
+        optionDefault.disabled = true;
+        optionDefault.selected = true;
+        subtipoSelect.appendChild(optionDefault);
+
+        // Añadir opciones de subtipos según el tipo seleccionado
+        if (tipoSeleccionado === "Accidentes de Tráfico") {
+            var subtipos = ["Colisión de Vehículos", "Atropello", "Vehículo Volcado", "Accidente de Motocicleta", "Otros Accidentes de Tráfico"];
+        } else if (tipoSeleccionado === "Emergencias Médicas") {
+            var subtipos = ["Ataque Cardíaco", "Dificultad Respiratoria", "Accidente Cerebrovascular (ACV)", "Heridas Graves", "Intoxicación", "Reacción Alérgica Severa"];
+        } else if (tipoSeleccionado === "Incendios") {
+            var subtipos = ["Incendio en Vivienda", "Incendio Estructural", "Incendio de Vehículo", "Incendio Forestal", "Otros Incendios"];
+        } else if (tipoSeleccionado === "Crimen y Violencia") {
+            var subtipos = ["Robo", "Asalto", "Violencia Doméstica", "Agresión Sexual", "Amenaza de Bomba", "Otros Crímenes"];
+        } else if (tipoSeleccionado === "Rescates") {
+            var subtipos = ["Rescate en Altura", "Rescate Acuático", "Rescate en Espacios Confinados", "Rescate de Animales", "Otros Rescates"];
+        } else if (tipoSeleccionado === "Emergencias Ambientales") {
+            var subtipos = ["Derrame de Sustancias Peligrosas", "Contaminación del Aire", "Contaminación del Agua", "Desastres Naturales (Terremotos, Inundaciones, etc.)"];
+        } else if (tipoSeleccionado === "Problemas de Seguridad Pública") {
+            var subtipos = ["Amenaza de Bomba", "Desorden Público", "Incidente en Institución Educativa", "Incidente en Lugar de Trabajo"];
+        }
+
+        // Agregar las opciones de subtipos al select de subtipo
+        subtipos.forEach(function(subtipo) {
+            var option = document.createElement("option");
+            option.value = subtipo;
+            option.text = subtipo;
+            subtipoSelect.appendChild(option);
+        });
+    }
+    function openMapContainer() {
+            document.getElementById("map-container").style.display = "block";
+        }
+
+        function closeMapContainer() {
+            document.getElementById("map-container").style.display = "none";
+        }
+        function initMap() {
+            var map = L.map('map').setView([-34.5459, -58.7117], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+
+            var marker;
+
+            map.on('click', function(e) {
+                if(marker) {
+                    map.removeLayer(marker); // Borra el marcador anterior si existe
+                }
+                marker = L.marker(e.latlng).addTo(map); // Añade un nuevo marcador en la posición seleccionada
+                getAddress(e.latlng.lat, e.latlng.lng); // Obtiene la dirección correspondiente a la posición
+            });
+        }
+
+        function getAddress(lat, lng) {
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('address').innerHTML = `Dirección: ${data.display_name}`;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"> 
+
+</script> 
+</body>
+</html>

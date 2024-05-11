@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obtener dirección de OpenStreetMap</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Selecciona una posición en el mapa:</h1>
+    <div id="map"></div>
+    <p id="address"></p>
+
+    <script>
+        function initMap() {
+            var map = L.map('map').setView([-34.5459, -58.7117], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+
+            var marker;
+
+            map.on('click', function(e) {
+                if(marker) {
+                    map.removeLayer(marker); // Borra el marcador anterior si existe
+                }
+                marker = L.marker(e.latlng).addTo(map); // Añade un nuevo marcador en la posición seleccionada
+                getAddress(e.latlng.lat, e.latlng.lng); // Obtiene la dirección correspondiente a la posición
+            });
+        }
+
+        function getAddress(lat, lng) {
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('address').innerHTML = `Dirección: ${data.display_name}`;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"> 
+   
+   </script> 
+</body>
+</html>
